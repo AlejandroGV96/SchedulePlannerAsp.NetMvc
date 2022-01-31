@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Schedule_Planner.Data;
 using Schedule_Planner.Models;
@@ -28,12 +29,28 @@ namespace Schedule_Planner.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
+            UserModel? selectUser = null;
+            try
+            {
+                IEnumerable<UserModel> userList = _db.User;
+                selectUser = userList
+                    .First(user => user.UserName.Equals(username));
+            }
+            catch (Exception e)
+            {
+                //Console.WriteLine(e);
+                TempData["ErrorNotFound"] = "Error. User does not exist!";
+            }
+
+
             // Verify the credentials
-            if (username == "ale" && password == "123" )
+            if (selectUser?.Password == password && selectUser is not null)
             {
                 var claims = new List<Claim>();
                 claims.Add(new Claim("username", username));
+                claims.Add(new Claim("Role", selectUser.Role));
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, username));
+                claims.Add(new Claim(ClaimTypes.Role, selectUser.Role));
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
@@ -41,7 +58,15 @@ namespace Schedule_Planner.Controllers
                 return Redirect("/Home/Index");
             }
 
-            return BadRequest();
+            TempData["ErrorIncorrect"] = "Error. Username or password are incorrect";
+            return View("Login");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
         }
     }
 }
