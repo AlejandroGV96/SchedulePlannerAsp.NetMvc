@@ -1,0 +1,13 @@
+@model Schedule_Planner.Models.UserModel
+@{
+    ViewData["Title"] = "My Account";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Welcome, @Model.UserName</p>
+<ul>
+
+    <li>My user name:   @Model.UserName</li>
+    <li>My name:    @Model.Name</li>
+    <li>My role:        @Model.Role</li>
+</ul>
