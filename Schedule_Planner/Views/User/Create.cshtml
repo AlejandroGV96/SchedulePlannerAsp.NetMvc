@@ -43,9 +43,35 @@
                     <div class="col-4">
                         <label asp-for="Role"></label>
                     </div>
-                    <div class="col-8">
-                        <input asp-for="Role" class="form-control"/>
+                    <div class="col-8 dropdown">
+                        <a class="btn btn-light dropdown-toggle" style="width: 100%" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Roles
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <div class="dropdown-item">
+                                    @Html.RadioButtonFor(model => model.Role, "administrator")
+                                    Administrator
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown-item">
+                                    @Html.RadioButtonFor(model => model.Role, "teacher")
+                                    Teacher
+                                </div>
+                            </li>
+                            <li>
+                                <div class="dropdown-item">
+                                    @Html.RadioButtonFor(model => model.Role, "student")
+                                    Student
+                                </div>
+                            </li>
+                        </ul>
                         <span asp-validation-for="Role" class="text-danger"></span>
+
+                        <!-- 
+                        <input asp-for="Role" class="form-control"/>
+                        -->
                     </div>
                 </div>
                 <div class="form-group row my-2">

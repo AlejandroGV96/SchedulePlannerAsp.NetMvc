@@ -45,11 +45,11 @@ namespace Schedule_Planner.Migrations
 
                     b.Property<string>("TeacherName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SubjectName", "DateTime", "TeacherName")
+                    b.HasIndex("SubjectName", "DateTime", "StudentId")
                         .IsUnique();
 
                     b.ToTable("Schedule");
@@ -75,11 +75,11 @@ namespace Schedule_Planner.Migrations
 
                     b.Property<string>("TeacherName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SubjectName", "TeacherName")
+                    b.HasIndex("SubjectName", "StudentId")
                         .IsUnique();
 
                     b.ToTable("Subject");

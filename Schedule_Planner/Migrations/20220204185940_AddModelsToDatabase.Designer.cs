@@ -12,7 +12,7 @@ using Schedule_Planner.Data;
 namespace Schedule_Planner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220202175045_AddModelsToDatabase")]
+    [Migration("20220204185940_AddModelsToDatabase")]
     partial class AddModelsToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,11 +47,11 @@ namespace Schedule_Planner.Migrations
 
                     b.Property<string>("TeacherName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SubjectName", "DateTime", "TeacherName")
+                    b.HasIndex("SubjectName", "DateTime", "StudentId")
                         .IsUnique();
 
                     b.ToTable("Schedule");
@@ -77,11 +77,11 @@ namespace Schedule_Planner.Migrations
 
                     b.Property<string>("TeacherName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SubjectName", "TeacherName")
+                    b.HasIndex("SubjectName", "StudentId")
                         .IsUnique();
 
                     b.ToTable("Subject");

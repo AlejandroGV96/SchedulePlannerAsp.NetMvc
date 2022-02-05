@@ -1,0 +1,62 @@
+@model Tuple<List<UserModel>, SubjectModel>
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Title of page -->
+<div class="container p-3">
+    <div class="row pt-4 nav-justified">
+        <div class="col-6">
+            <h2 class="text-primary">Students in @Model.Item2.SubjectName</h2>
+        </div>
+        
+        <div class="col-6 text-end">
+            <a asp-action="Index" class="btn btn-light w-100">
+                Return &nbsp; <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
+    </div>
+<!-- Subject Info -->
+    <br/><br/>
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th>Subject Name</th>
+            <th>Teacher</th>
+            <th>Students in class</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td width="40%">@Model.Item2.SubjectName</td>
+            <td width="40%">@Model.Item2.TeacherName</td>
+            <td class="text-center">@Model.Item1.Count</td>
+        </tr>
+        </tbody>
+    </table>
+    <br/><br/>
+<!-- List of students -->
+
+@if (Model.Item1.Any())
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model.Item1)
+                {
+                    <tr>
+                        <td width="20%" class="text-center">@student.Id</td>
+                        <td>@student.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+

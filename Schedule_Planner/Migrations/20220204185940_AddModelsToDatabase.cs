@@ -19,7 +19,7 @@ namespace Schedule_Planner.Migrations
                     TeacherId = table.Column<int>(type: "int", nullable: false),
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SubjectName = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TeacherName = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    TeacherName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,7 +35,7 @@ namespace Schedule_Planner.Migrations
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     TeacherId = table.Column<int>(type: "int", nullable: false),
                     SubjectName = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TeacherName = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    TeacherName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,15 +59,15 @@ namespace Schedule_Planner.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Schedule_SubjectName_DateTime_TeacherName",
+                name: "IX_Schedule_SubjectName_DateTime_StudentId",
                 table: "Schedule",
-                columns: new[] { "SubjectName", "DateTime", "TeacherName" },
+                columns: new[] { "SubjectName", "DateTime", "StudentId" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subject_SubjectName_TeacherName",
+                name: "IX_Subject_SubjectName_StudentId",
                 table: "Subject",
-                columns: new[] { "SubjectName", "TeacherName" },
+                columns: new[] { "SubjectName", "StudentId" },
                 unique: true);
 
             migrationBuilder.CreateIndex(

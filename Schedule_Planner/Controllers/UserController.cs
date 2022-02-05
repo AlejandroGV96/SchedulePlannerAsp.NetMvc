@@ -22,7 +22,9 @@ namespace Schedule_Planner.Controllers
         [Authorize(Roles = "administrator")]
         public IActionResult Index()
         {
-            IEnumerable<UserModel> objList = _db.User;
+            //IEnumerable<UserModel> objList = _db.User.OrderBy( s => s.Name);
+            List<UserModel> objList = _db.User.ToList();
+            objList.Sort( (x, y) => string.Compare(x.Name,y.Name));
             return View(objList);
         }
         

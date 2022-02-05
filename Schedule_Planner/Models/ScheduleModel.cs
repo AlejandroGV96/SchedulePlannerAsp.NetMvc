@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Schedule_Planner.Models;
 
-[Index(nameof(SubjectName),nameof(DateTime),nameof(TeacherName), IsUnique = true)]
+[Index(nameof(SubjectName),nameof(DateTime),nameof(StudentId), IsUnique = true)]
 public class ScheduleModel
 {
     [Key]
