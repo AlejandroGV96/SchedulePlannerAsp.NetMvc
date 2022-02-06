@@ -32,7 +32,7 @@
             <tbody>
                 @foreach (var subject in Model)
                 {
-                <tr>
+                <tr class="align-middle">
                     <td width="40%">@subject.SubjectName</td>
                     <td width="40%">@subject.TeacherName</td>
                     @if (User.IsInRole("administrator"))

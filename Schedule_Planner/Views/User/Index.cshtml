@@ -30,7 +30,7 @@
             <tbody>
                 @foreach (var obj in Model)
                 {
-                <tr>
+                <tr class="align-middle">
                     <td width="50%">@obj.Name</td>
                     <td width="30%">@obj.Role</td>
                     @if (obj.Id.ToString() != User.FindFirst("Id").Value)

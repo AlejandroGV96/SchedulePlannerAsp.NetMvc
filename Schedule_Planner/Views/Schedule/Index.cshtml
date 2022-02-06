@@ -1,0 +1,75 @@
+@model List<Schedule_Planner.Models.ScheduleModel>
+@{
+    ViewData["Title"] = "Index";
+    var teacherSubjects = (List<string>) ViewData["subjects"];
+}
+<div class="container p-3">
+    <div class="row pt-4 justify-content-between ">
+        <div class="col-6">
+            <h2 class="text-primary">Scheduled Classes</h2>
+        </div>
+        @if (User.IsInRole("teacher"))
+        {
+            <div class="dropdown col-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="subjects" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-plus"></i> &nbsp; Schedule New Class
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="subjects">
+                        @for (int i = 0; i < teacherSubjects.Count; i++)
+                        {
+                            <li><a asp-controller="Schedule" asp-action="Create" asp-route-Id="@int.Parse(User.FindFirst("Id").Value),@teacherSubjects[i]" class="dropdown-item">
+                                 @teacherSubjects[i]
+                            </a></li>
+                        }
+                </ul>
+            </div>
+        }
+    </div>
+
+    <br/><br/>
+
+    @if (Model.Any())
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Subject Name</th>
+                    <th>Teacher</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var schedule in Model)
+                {
+                <tr class="align-middle">
+                    <td width="25%">@schedule.SubjectName</td>
+                    <td width="25%">@schedule.TeacherName</td>
+                    <td width="25%">@schedule.DateTime</td>
+                    @if (User.IsInRole("administrator") || User.IsInRole("teacher"))
+                    {
+                        <td class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Schedule" asp-route-Id="@schedule.Id" asp-action="Delete" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i> &nbsp;
+                                </a>
+                            </div>
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Schedule" asp-route-Id="" asp-action="Delete" class="btn btn-secondary" style="pointer-events: none;">
+                                    <i class="fas fa-trash-alt"></i> &nbsp;
+                                </a>
+                            </div>
+                        </td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+</div>
