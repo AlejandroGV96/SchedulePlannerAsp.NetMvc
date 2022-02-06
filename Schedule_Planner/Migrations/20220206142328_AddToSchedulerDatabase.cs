@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Schedule_Planner.Migrations
 {
-    public partial class AddModelsToDatabase : Migration
+    public partial class AddToSchedulerDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
