@@ -145,6 +145,9 @@ input {
         display: none;
         
     }
+    .login-title {
+        display: none;
+    }
 
     .login-form {
         display: block;
@@ -175,6 +178,9 @@ input {
 
     .login-image {
         display: none;
+    }
+    .login-title {
+        display:none;
     }
 
     .login-form {

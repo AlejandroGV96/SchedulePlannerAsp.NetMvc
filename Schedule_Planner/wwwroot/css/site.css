@@ -17,58 +17,81 @@ body {
     margin-bottom: 60px;
     /*background-image: url(/media/images/login-bg.jpg);*/
 }
+nav {
+    background-color: #142d4c;
+    height:70px;
+}
+.brand {
+  color:white;
+}
+.brand:hover{
+  color:white;
+}
+a[disabled="disabled"] {
+    pointer-events: none;
+}
+.nav-item {
+    margin-left:20px;
+}
+.nav-link {
+    color:white;
+}
+.nav-link:hover {
+    color:white;
+}
 
-.ins-body {
+.nav-out {
+    float: right;
+    color: white;
+    font-weight: 400;
+}
+.nav-out:hover {
     background-color: white;
-    margin-top: 8%;
-    width: 90%;
+    font-weight:500;
+    color: black;
 }
 
-.login-image {
-    display: flex;
-    flex-wrap: wrap;
-    border-right: 3px solid blue;
-    line-height: 10px;
-    margin-top: 20%;
-    margin-left: 30%;
-    padding-right:15%;
-}
-.login-right {
-    display: block;
+
+.nav-link:hover{
+    border-bottom: 1px solid white;
+    transition-property:font-size;
+    font-size:18px;
 }
 
-.login-form {
-    display: block;
-    margin-top: 20%;
-    margin-left: 10%;
-    font-weight: normal;
-    text-align: center;
-    width:400px;
-
-}
-.login-button {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-input {
-    margin: 20px 0px;
-}
 footer {
-    text-align:center;
-    border:none;
-    font-size:16px;
+    background-color: #142d4c;
+    height: 70px;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+    color: #ebebeb;
+}
+.navbar-toggler {
+    color: #142d4c;
+    background-color:white;
+}
+.log-togg {
+    display:none;
 }
 
-
-.bg-image-vertical {
-  position: relative;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: auto 100%;
-}
-
-@media (min-width: 1025px) {
-  .h-custom-2 {
-    height: 100%;
-  }
+@media only screen and (max-width: 576px) {
+    .log-togg {
+        display:block;
+    }
+    .nav-out {
+        display:none;
+    }
+    .nav-link {
+        margin-left:20px;
+    }
+    .nav-link:hover {
+        border-bottom: none;
+        font-size: 16px;
+        color: white;
+     }
+    .nav-item {
+        background-color: #142d4c;
+        border:1px solid black;
+        width: 50%;
+    }
 }

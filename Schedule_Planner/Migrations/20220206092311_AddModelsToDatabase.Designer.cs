@@ -12,7 +12,7 @@ using Schedule_Planner.Data;
 namespace Schedule_Planner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220204185940_AddModelsToDatabase")]
+    [Migration("20220206092311_AddModelsToDatabase")]
     partial class AddModelsToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
