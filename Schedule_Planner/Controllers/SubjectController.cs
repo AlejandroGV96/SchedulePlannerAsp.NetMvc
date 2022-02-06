@@ -156,9 +156,19 @@ namespace Schedule_Planner.Controllers
                 .Where(subj => subj.TeacherId == subjectDetails.TeacherId)
                 .Where(subj => subj.SubjectName == subjectDetails.SubjectName)
                 .ToList();
+            
+            // delete all the records with this subject name
+            var delSubjectSched = _db.Schedule
+                .Where(record => record.SubjectName == subjectDetails.SubjectName)
+                .Where(record => record.TeacherId == subjectDetails.TeacherId);
+            
+            foreach (var record in delSubjectSched)
+            {
+                _db.Schedule.Remove(record);
+            }
             foreach (var student in delSubjects.Where(student => _db.User.Find(student.StudentId) is not null))
             {
-                _db.Remove(student);
+                _db.Subject.Remove(student);
             }
 
             _db.SaveChanges();

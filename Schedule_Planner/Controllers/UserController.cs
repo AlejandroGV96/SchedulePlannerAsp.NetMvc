@@ -105,6 +105,36 @@ namespace Schedule_Planner.Controllers
             {
                 return NotFound();
             }
+
+            var SchedulesToDelete = _db.Schedule
+                .Where(schedule => schedule.StudentId == id);
+            var SchedulesToDeleteTeacher = _db.Schedule
+                .Where(schedule => schedule.TeacherId == id);
+            var SubjectToDelete = _db.Subject
+                .Where(subject => subject.StudentId == id);
+            var SubjectToDeleteTeacher = _db.Subject
+                .Where(subject => subject.TeacherId == id);
+            
+            foreach (var schedule in SchedulesToDelete )
+            {
+                _db.Schedule.Remove(schedule);
+            }
+            
+            foreach (var scheduleT in SchedulesToDeleteTeacher )
+            {
+                _db.Schedule.Remove(scheduleT);
+            }
+            
+            foreach (var subject in SubjectToDelete )
+            {
+                _db.Subject.Remove(subject);
+            }
+            
+            foreach (var subjectT in SubjectToDeleteTeacher )
+            {
+                _db.Subject.Remove(subjectT);
+            }
+            
             _db.User.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
