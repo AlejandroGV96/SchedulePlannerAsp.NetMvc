@@ -1,61 +1,69 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
     margin-bottom: 60px;
     /*background-image: url(/media/images/login-bg.jpg);*/
 }
+
 nav {
     background-color: #142d4c;
-    height:70px;
+    height: 70px;
 }
+
 .brand {
-  color:white;
+    color: white;
 }
-.brand:hover{
-  color:white;
-}
+
+    .brand:hover {
+        color: white;
+    }
+
 a[disabled="disabled"] {
     pointer-events: none;
 }
+
 .nav-item {
-    margin-left:20px;
+    margin-left: 20px;
 }
+
 .nav-link {
-    color:white;
+    color: white;
 }
-.nav-link:hover {
-    color:white;
-}
+
+    .nav-link:hover {
+        color: white;
+    }
 
 .nav-out {
     float: right;
     color: white;
     font-weight: 400;
 }
-.nav-out:hover {
-    background-color: white;
-    font-weight:500;
-    color: black;
-}
+
+    .nav-out:hover {
+        background-color: white;
+        font-weight: 500;
+        color: black;
+    }
 
 
-.nav-link:hover{
+.nav-link:hover {
     border-bottom: 1px solid white;
-    transition-property:font-size;
-    font-size:18px;
+    transition-property: font-size;
+    font-size: 18px;
 }
 
 footer {
@@ -66,32 +74,66 @@ footer {
     font-size: 16px;
     color: #ebebeb;
 }
+
 .navbar-toggler {
     color: #142d4c;
-    background-color:white;
+    background-color: white;
 }
+
 .log-togg {
-    display:none;
+    display: none;
 }
+
+.ret-but {
+    background-color: white;
+    color: #ffa500;
+    border: 3px solid #ffa500;
+}
+.ret-but:hover {
+    background-color: #ffa500;
+    color: white;
+    border: 3px solid #ffa500;
+}
+
+.acc-card {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#grad {
+    background-image: linear-gradient(to right ,#142d4c, lightgray);
+}
+
 
 @media only screen and (max-width: 576px) {
     .log-togg {
-        display:block;
+        display: block;
     }
+
     .nav-out {
-        display:none;
+        display: none;
     }
+
     .nav-link {
-        margin-left:20px;
+        margin-left: 20px;
     }
-    .nav-link:hover {
-        border-bottom: none;
-        font-size: 16px;
-        color: white;
-     }
+
+        .nav-link:hover {
+            border-bottom: none;
+            font-size: 16px;
+            color: #142d4c;
+            font-weight: 500;
+        }
+
     .nav-item {
         background-color: #142d4c;
-        border:1px solid black;
+        border: 1px solid black;
         width: 50%;
     }
+
+        .nav-item:hover {
+            background-color: white;
+        }
 }

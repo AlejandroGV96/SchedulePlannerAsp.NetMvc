@@ -12,8 +12,8 @@ using Schedule_Planner.Data;
 namespace Schedule_Planner.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220206092311_AddModelsToDatabase")]
-    partial class AddModelsToDatabase
+    [Migration("20220206142328_AddToSchedulerDatabase")]
+    partial class AddToSchedulerDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

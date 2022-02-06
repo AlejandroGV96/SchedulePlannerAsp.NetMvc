@@ -2,18 +2,26 @@
 @{
     ViewData["Title"] = "My Account";
 }
-<h1>@ViewData["Title"]</h1>
 
 
 
-<div class="card text-white bg-info mb-3" style="max-width: 20rem ;">
-  <div class="card-header">Welcome, @Model.UserName</div>
-  <div class="card-body">
-    <ul class="card-text" >
-        <li>My user name:   @Model.UserName</li>
-        <li>My name:    @Model.Name</li>
-        <li>My role:        @Model.Role</li>
-    </ul>
-  </div>
+
+<div class="acc-card">
+    <div class="card" id="grad" style="width: 700px;text-align:center; border:2px solid #142d4c;">
+      <div class="card-body" style="height:200px;">
+        <h5 class="card-title" style="margin-top:40px;font-weight:300;font-size:42px;color:white;">Welcome! <br />
+            <span style="font-weight:600;font-size:26px;color:white;">@Model.UserName</span>
+        </h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" style="padding-top:20px;padding-bottom:20px;border-bottom:1px solid #142d4c;background-color:whitesmoke"> <span style="color:#787878;font-size:14px;">Your Username:</span> <br /> <span style="font-weight:500"> @Model.UserName </span> </li>
+        <li class="list-group-item" style="padding-top:20px;padding-bottom:20px;border-bottom:1px solid #142d4c;background-color:whitesmoke"> <span style="color:#787878;font-size:14px;">Your Name: </span> <br /> <span style="font-weight:500"> @Model.Name </span></li>
+        <li class="list-group-item" style="padding-top:20px;padding-bottom:20px;background-color:whitesmoke"><span style="color:#787878;font-size:14px;"> Your Role: </span> <br /> <span style="font-weight:500">  @Model.Role </span></li>
+      </ul>
+    </div>
+
 </div>
+
+
+
 
