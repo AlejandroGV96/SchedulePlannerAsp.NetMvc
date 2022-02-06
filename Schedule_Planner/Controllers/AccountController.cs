@@ -60,6 +60,7 @@ namespace Schedule_Planner.Controllers
             {
                 var claims = new List<Claim>();
                 claims.Add(new Claim("username", selectUser.UserName));
+                claims.Add(new Claim("Name", selectUser.Name));
                 claims.Add(new Claim("Role", selectUser.Role));
                 claims.Add(new Claim("Id", selectUser.Id.ToString()));
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, selectUser.Name));
@@ -68,7 +69,7 @@ namespace Schedule_Planner.Controllers
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
                 
-                return Redirect("/Home/Index");
+                return Redirect("/Schedule/Index");
             }
 
             TempData["ErrorIncorrect"] = "Error. Password is incorrect";
@@ -76,7 +77,6 @@ namespace Schedule_Planner.Controllers
         }
         
         [Authorize]
-        [DisplayName("My Account")]
         public IActionResult Account()
         {
             IEnumerable<UserModel> userList = _db.User;

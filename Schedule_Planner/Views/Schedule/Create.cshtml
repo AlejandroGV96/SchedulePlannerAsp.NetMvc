@@ -1,0 +1,49 @@
+@model Schedule_Planner.Models.ScheduleSubmitModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <input asp-for="TeacherId" hidden/>
+        <input asp-for="SubjectName" hidden/>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Schedule new class</h2>
+        </div>
+        <div class="row">
+            <div class="col-8 my-3">
+                <div class="form-group row my-2">
+                    <div class="col-4">
+                        <label asp-for="SubjectName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="SubjectName" class="form-control" disabled/>
+                    </div>
+                </div>
+                <div class="form-group row my-2">
+                    <div class="col-4">
+                        <label>Date</label>
+                    </div>
+                    <div class="col-8 dropdown">
+                        <input class="form-control" asp-for="DateTime" asp-format="{0:yyyy-MM-ddTHH:mm}"/>
+                    </div>
+                </div>
+                <div class="form-group row my-2">
+                    <div class="col-8 offset-4 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Create"/>
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-light w-100">
+                                Return &nbsp; <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
