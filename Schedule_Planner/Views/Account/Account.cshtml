@@ -4,10 +4,16 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Welcome, @Model.UserName</p>
-<ul>
 
-    <li>My user name:   @Model.UserName</li>
-    <li>My name:    @Model.Name</li>
-    <li>My role:        @Model.Role</li>
-</ul>
+
+<div class="card text-white bg-info mb-3" style="max-width">
+  <div class="card-header">Welcome, @Model.UserName</div>
+  <div class="card-body">
+    <ul class="card-text" >
+        <li>My user name:   @Model.UserName</li>
+        <li>My name:    @Model.Name</li>
+        <li>My role:        @Model.Role</li>
+    </ul>
+  </div>
+</div>
+
